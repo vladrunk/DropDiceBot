@@ -56,9 +56,12 @@ async def update_listener(messages):
 
 def markup_make_session(owner: str, owner_id: int):
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton(text='Сделать ставку', callback_data=CALLBACK_CHOOSE_BET))
-    markup.add(InlineKeyboardButton(text=f'Кинуть кубить может {owner}',
-                                    callback_data=f'{CALLBACK_SEND_DICE}#{owner_id}'))
+    markup.add(
+        InlineKeyboardButton(text='Сделать ставку', callback_data=CALLBACK_CHOOSE_BET),
+        InlineKeyboardButton(text=f'Кинуть кубить может {owner}',
+                             callback_data=f'{CALLBACK_SEND_DICE}#{owner_id}'),
+        row_width=1,
+    )
     return markup
 
 
