@@ -237,6 +237,8 @@ async def callback_choose_bet(c: CallbackQuery):
         chat_id=c.message.chat.id,
         text=text,
         reply_markup=markup_choose_bet(user=c.from_user.id),
+        message_thread_id=c.message.message_thread_id,
+        disable_notification=True,
     )
 
 
@@ -254,7 +256,9 @@ async def callback_send_dice(c: CallbackQuery):
         return False
 
     msg_dice = await bot.send_dice(
-        chat_id=c.message.chat.id
+        chat_id=c.message.chat.id,
+        message_thread_id=c.message.message_thread_id,
+        disable_notification=True,
     )
     result = msg_dice.dice.value
     session_id = parse_session_id(m=c.message)
@@ -308,6 +312,8 @@ async def cmd_game(m: Message):
               '\n\n'
               f'Ставки:'),
         parse_mode='Markdown',
+        message_thread_id=m.message_thread_id,
+        disable_notification=True,
         reply_markup=markup_make_session(owner=owner, owner_id=m.from_user.id),
     )
     await db.create_session(m=m, msg_session=msg_session, session_id=session_id)
@@ -328,6 +334,8 @@ async def cmd_start(m: Message):
             '\n'
             f'{"Баланс:":<16}`{user.balance}`'
         ),
+        disable_notification=True,
+        message_thread_id=m.message_thread_id,
         parse_mode='Markdown'
     )
 
