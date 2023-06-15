@@ -1,0 +1,14 @@
+[Unit]
+Description=Bot Dice
+After=network.target
+
+[Service]
+ExecStart=/home/ubuntu/bots/dice/env/bin/python /home/ubuntu/bots/dice/main.py
+WorkingDirectory=/home/ubuntu/bots/dice
+Restart=always
+User=ubuntu
+Group=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+
