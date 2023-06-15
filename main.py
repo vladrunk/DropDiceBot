@@ -307,14 +307,13 @@ async def cmd_game(m: Message):
     log.info(f'{log.chat_info(m)} {owner} start session {session_id}')
     msg_session = await bot.send_message(
         chat_id=m.chat.id,
-        text=(f'Сессия: `{session_id}`'
+        text=(f'Сессия: {session_id}'
               '\n\n'
               f'Начал сессию: {owner}'
               '\n\n'
-              f'Можешь сделать ставку на то что выпадет на кубике, пока *{owner}* не кинул кубик.'
+              f'Можешь сделать ставку на то что выпадет на кубике, пока {owner} не кинул кубик.'
               '\n\n'
               f'Ставки:'),
-        parse_mode='Markdown',
         message_thread_id=m.message_thread_id,
         disable_notification=True,
         reply_markup=markup_make_session(owner=owner, owner_id=m.from_user.id),
@@ -339,7 +338,6 @@ async def cmd_start(m: Message):
         ),
         disable_notification=True,
         message_thread_id=m.message_thread_id,
-        parse_mode='Markdown'
     )
 
 
