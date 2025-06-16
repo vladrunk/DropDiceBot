@@ -58,7 +58,7 @@ python main.py
 1. Скопируйте файл сервиса:
 
 ```bash
-sudo cp systemd/dropdicebot.service /etc/systemd/system/
+sudo cp systemd/bot_dice.service /etc/systemd/system/
 ```
 
 2. Перезапустите демон и активируйте сервис:
